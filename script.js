@@ -1,30 +1,32 @@
-let currentPlayer = "X";
+
+let currentPlayer = "X";  // Start with Player 1 (X)
 let player1 = "";
 let player2 = "";
 let gameActive = false;
-let board = Array(9).fill("");
+let board = Array(9).fill("");  // Empty board
 
 // Handle submitting player names
 document.getElementById("submit").addEventListener("click", () => {
   const p1 = document.getElementById("player-1").value.trim();
   const p2 = document.getElementById("player-2").value.trim();
 
+  // Check if both player names are entered
   if (p1 && p2) {
     player1 = p1;
     player2 = p2;
-    document.querySelector(".player-inputs").style.display = "none";
-    document.querySelector(".game-area").style.display = "block";
+    document.querySelector(".player-inputs").style.display = "none";  // Hide input fields
+    document.querySelector(".game-area").style.display = "block";  // Show game area
     gameActive = true;
-    board = Array(9).fill("");
-    currentPlayer = "X";
+    board = Array(9).fill("");  // Reset board
+    currentPlayer = "X";  // Player 1 starts
     document.querySelectorAll(".cell").forEach(cell => {
-      cell.textContent = "";
+      cell.textContent = "";  // Clear the board
     });
     updateMessage();
   }
 });
 
-// Update the message to show whose turn it is
+// Update message with the current player's turn
 function updateMessage() {
   const name = currentPlayer === "X" ? player1 : player2;
   document.querySelector(".message").textContent = `${name}, you're up`;
@@ -56,27 +58,27 @@ function checkWinner() {
 // Handle cell click (placing X or O)
 document.querySelectorAll(".cell").forEach(cell => {
   cell.addEventListener("click", () => {
-    if (!gameActive) return;
+    if (!gameActive) return;  // Do nothing if the game is over
 
     const id = parseInt(cell.id) - 1;
 
-    // Check if the cell is already filled
+    // Prevent clicking on already filled cells
     if (board[id] !== "") return;
 
-    // Place the current player's mark
+    // Place the current player's mark (X or O)
     board[id] = currentPlayer;
     cell.textContent = currentPlayer;
 
-    // Check for winner
+    // Check for a winner after the move
     if (checkWinner()) {
-      gameActive = false;
+      gameActive = false;  // Stop the game
       const winner = currentPlayer === "X" ? player1 : player2;
-      showWinner(winner);
+      showWinner(winner);  // Show winner message
       return;
     }
 
     // Switch to the next player
     currentPlayer = currentPlayer === "X" ? "O" : "X";
-    updateMessage();
+    updateMessage();  // Update the message with the next player's turn
   });
 });
