@@ -2,24 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tic Tac Toe Game</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <!-- Player Input Section -->
-    <div class="player-inputs">
-      <input type="text" id="player-1" placeholder="Enter Player 1 Name">
-      <input type="text" id="player-2" placeholder="Enter Player 2 Name">
+    <!-- Initial player input view -->
+    <div id="player-input">
+      <h1>Enter Player Names</h1>
+      <input type="text" id="player-1" placeholder="Player 1 Name">
+      <input type="text" id="player-2" placeholder="Player 2 Name">
       <button id="submit">Submit</button>
     </div>
 
-    <!-- Game Area Section -->
-    <div class="game-area" style="display: none;">
+    <!-- Game view, hidden initially -->
+    <div id="game-board" style="display: none;">
       <h1>Tic Tac Toe</h1>
       <div class="message"></div>
       <div class="board">
+        <!-- 9 cells -->
         <div class="cell" id="1"></div>
         <div class="cell" id="2"></div>
         <div class="cell" id="3"></div>
