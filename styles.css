@@ -32,7 +32,7 @@ button {
 .board {
   display: grid;
   grid-template-columns: repeat(3, 100px);
-  gap: 2px;
+  gap: 0; /* No space between cells */
   margin-top: 20px;
   justify-content: center;
 }
