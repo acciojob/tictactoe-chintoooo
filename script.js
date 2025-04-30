@@ -12,21 +12,22 @@ let gameActive = true;
 let board = Array(9).fill("");
 
 const winPatterns = [
-  [0,1,2], [3,4,5], [6,7,8],  // rows
-  [0,3,6], [1,4,7], [2,5,8],  // cols
-  [0,4,8], [2,4,6]            // diagonals
+  [0,1,2], [3,4,5], [6,7,8],
+  [0,3,6], [1,4,7], [2,5,8],
+  [0,4,8], [2,4,6]
 ];
 
 submitBtn.addEventListener("click", () => {
   player1 = document.getElementById("player-1").value.trim();
   player2 = document.getElementById("player-2").value.trim();
-  
+
   if (!player1 || !player2) {
     alert("Please enter both player names.");
     return;
   }
 
   currentPlayer = player1;
+  currentSymbol = "X";
   messageDiv.textContent = `${currentPlayer}, you're up`;
   playerInputDiv.style.display = "none";
   gameBoardDiv.style.display = "block";
@@ -38,6 +39,11 @@ cells.forEach((cell, index) => {
 
     cell.textContent = currentSymbol;
     board[index] = currentSymbol;
+
+    if (currentSymbol === "O") {
+      cell.style.backgroundColor = "purple";
+      cell.style.color = "white";
+    }
 
     if (checkWinner()) {
       messageDiv.textContent = `${currentPlayer}, congratulations you won!`;
@@ -63,8 +69,14 @@ function switchPlayer() {
 }
 
 function checkWinner() {
-  return winPatterns.some(pattern => {
+  for (let pattern of winPatterns) {
     const [a, b, c] = pattern;
-    return board[a] !== "" && board[a] === board[b] && board[b] === board[c];
-  });
+    if (board[a] && board[a] === board[b] && board[b] === board[c]) {
+      cells[a].classList.add("win");
+      cells[b].classList.add("win");
+      cells[c].classList.add("win");
+      return true;
+    }
+  }
+  return false;
 }
