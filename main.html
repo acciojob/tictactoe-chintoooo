@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tic Tac Toe</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
+    <h1>Tic Tac Toe</h1>
+
     <div class="input-section">
-      <input type="text" id="player1" placeholder="Player 1 Name">
-      <input type="text" id="player2" placeholder="Player 2 Name">
+      <input type="text" id="player1" placeholder="Player 1 Name" />
+      <input type="text" id="player2" placeholder="Player 2 Name" />
       <button id="submit">Submit</button>
     </div>
-    <div class="game-section hidden">
-      <h1>Tic Tac Toe</h1>
+
+    <div class="game-section" style="visibility: hidden; height: 0; overflow: hidden;">
       <div class="message"></div>
-      <div class="board" id="board">
+      <div class="board">
         <div class="cell" id="1"></div>
         <div class="cell" id="2"></div>
         <div class="cell" id="3"></div>
@@ -29,6 +31,7 @@
       </div>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
