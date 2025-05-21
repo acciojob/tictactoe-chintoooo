@@ -7,16 +7,17 @@
 </head>
 <body>
   <div class="container">
-    <div id="player-input">
+    <div class="player-input">
       <input type="text" id="player-1" placeholder="Enter Player 1 Name">
       <input type="text" id="player-2" placeholder="Enter Player 2 Name">
       <button id="submit">Submit</button>
     </div>
 
-    <div id="game-board" style="display: none;">
+    <div class="game" style="display: none;">
       <h1>Tic Tac Toe</h1>
       <div class="message"></div>
       <div class="board">
+        <!-- 9 cells with ids 1 to 9 -->
         <div class="cell" id="1"></div>
         <div class="cell" id="2"></div>
         <div class="cell" id="3"></div>
@@ -29,6 +30,7 @@
       </div>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
